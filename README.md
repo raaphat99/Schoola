@@ -4,8 +4,8 @@ Schoola is a dynamic and user-friendly platform designed to enhance the educatio
 # Installation
 1. pip install -r requirements.txt
 2. open package manager (ALT + T + N + O) and apply the following commands to migrate the database
-add-migration "init"
-update-database
+ * add-migration "init"
+ * update-database
 3. compile and run the solution using "dotnet run" command or through the visual studio wizard
 
 # Features
