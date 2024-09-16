@@ -6,7 +6,7 @@ Schoola is a dynamic and user-friendly platform designed to enhance the educatio
 2. open package manager (ALT + T + N + O) and apply the following commands to migrate the database
  * add-migration "init"
  * update-database
-3. compile and run the solution using "dotnet run" command or through the visual studio wizard
+3. compile and run the solution using "dotnet run" command or through Visual Studio
 
 # Features
 * Implementing CRUD operations for Student and Course modules.
