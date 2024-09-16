@@ -1,0 +1,38 @@
+﻿@using WebApplicationDemo.Models
+
+@model Instructor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="/css/site.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div>
+                <a class="btn-goback" asp-controller="instructor" asp-action="index">go back</a>
+            </div>
+            <div class="instructor-card">
+                <div class="profile-image">
+                    <img src="/media/images/@Model.ImageUrl" alt="Profile Picture">
+                </div>
+                <div class="info">
+                    <h2>@Model.Name</h2>
+                    <p>Works at @Model.Department.Name department</p>
+                    <p>Lives in @Model.Address</p>
+                    <p>Earns @Model.Salary L.E</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

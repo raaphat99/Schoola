@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Instructors";
+    Layout = "_myLayout";
+}
+
+@using WebApplicationDemo.Models
+
+@model ICollection<Instructor>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Instructors</title>
+    <link href="/css/site.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            @foreach (Instructor ins in Model)
+            {
+                <div class="cards">
+                    <div class="instructor-card">
+                        <div class="profile-image">
+                            <a asp-controller="instructor" asp-action="details" asp-route-id="@ins.ID"><img src="/media/images/@ins.ImageUrl" alt="Profile Picture"></a>
+                        </div>
+                        <div class="info">
+                            <h2>@ins.Name</h2>
+                            <p>Works at @(ins.Department != null ? ins.Department.Name : "Undefined") department</p>
+                            <p>Lives in @ins.Address</p>
+                            <p>Earns @ins.Salary L.E</p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </section>
+        
+
+
+</body>
+</html>
+
+

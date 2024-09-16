@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Trainees";
+    Layout = "_myLayout";
+}
+
+@model IEnumerable<Trainee>;
+
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+        <link href="/css/site.css" rel="stylesheet" />
+    </head>
+    <body>
+    <section>
+        <div class="container">
+            <a asp-controller="trainee" asp-action="create" class="btn btn-add-student">Add Student</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Level</th>
+                        <th>GPA</th>
+                        <th>Department</th>
+                        <th>Image</th>
+                        <th>Courses</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var trainee in @Model)
+                    {
+                        <tr>
+                            <th scope="row">@trainee.ID</th>
+                            <a asp-controller="trainee" asp-action="details" asp-route-id="@trainee.ID">
+                            <td>@trainee.Name</td></a>
+                            <td>@trainee.Address</td>
+                            <td>@trainee.Level</td>
+                            <td>@trainee.GPA</td>
+                            <td>@trainee.Department?.Name</td>
+                            <td><img src="~/media/images/@(trainee.ImageUrl != null ? trainee.ImageUrl : "user_icon.png")" style="width: 100px; height: 100px;" /></td>
+                            <td><a class="btn btn-details" asp-controller="trainee" asp-action="details" asp-route-id="@trainee.ID">Details</a></td>
+                            <td><a class="btn btn-update" asp-controller="trainee" asp-action="edit" asp-route-id="@trainee.ID">Update</a></td>
+                            <td><a class="btn btn-delete" asp-controller="trainee" asp-action="destroy" asp-route-id="@trainee.ID">Delete</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+    </body>
+    </html>
+
+
+

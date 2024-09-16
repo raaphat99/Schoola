@@ -1,0 +1,48 @@
+﻿@using WebApplicationDemo.ViewModels
+@model ICollection<TraineeGradesViewModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/site.css" rel="stylesheet" />
+    <title>Grades</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div>
+                <a class="btn-goback" asp-controller="trainee" asp-action="index" >go back</a>
+            </div>
+            <h2>Student ID: @ViewBag.ID</h2>
+            <h2>Student Name: @ViewBag.Name</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Full Mark</th>
+                        <th>Success Mark</th>
+                        <th>Trainee Mark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in @Model)
+                    {
+                        <tr>
+                            <th>@course.CourseName</th>
+                            <td>@course.CourseFullMark</td>
+                            <td>@course.CourseSuccessMark</td>
+                            <td style="color:@(course.Color); font-weight:bold;">@course.TraineeMark</td>
+                        </tr>
+                    }
+
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
+
+

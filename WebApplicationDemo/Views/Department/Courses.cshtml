@@ -1,0 +1,58 @@
+﻿@model ICollection<Course>;
+
+@{
+    Layout = "_myLayout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Courses</title>
+    <link href="/css/site.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Full Mark</th>
+                <th scope="col">Passing Mark</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var course in @Model)
+            {
+                <tr>
+                    <th scope="row">@course.ID</th>
+                    <td>@course.Name</td>
+                    <td>@course.CourseDegree</td>
+                    <td>@course.PassDegree</td>
+                    <td><a class="btn btn-danger" asp-controller="Department" asp-action="DeleteCourse" asp-route-id="@ViewBag.DeptID" asp-route-courseID="@course.ID">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form method="post" asp-controller="Department" asp-action="AddCourse" asp-route-id="@ViewBag.DeptID">
+        
+        <div>
+            <label>Add Course</label>
+            <select class="form-select" name="coursesIDsToAdd" multiple>
+                @foreach (Course item in ViewBag.UnregisteredCourses)
+                {
+                    <option value="@item.ID"> @item.Name</option>
+                }
+            </select>
+        </div>
+        <input type="submit" value="Add"/>
+    </form>
+
+</body>
+</html>

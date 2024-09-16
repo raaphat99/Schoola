@@ -1,0 +1,94 @@
+﻿@model Trainee
+
+@{
+    SelectList DepartmentList = new SelectList(ViewBag.DeptList, "ID", "Name");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="/css/site.css" rel="stylesheet" />
+    <title>Add Trainee</title>
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="trainee-form">
+                <h3 style="text-align: center;">Fill out to enroll</h3>
+                <form method="post" asp-controller="trainee" asp-action="insert" enctype="multipart/form-data">
+
+                    <div>
+                        <label asp-for="@Model.Name"></label>
+                        <input type="text" asp-for="@Model.Name" placeholder="Enter your name" required>
+                        <span asp-validation-for="@Model.Name"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="@Model.Email"></label>
+                        <input type="email" asp-for="@Model.Email" placeholder="Enter your email" value="@Model.Email" required>
+                        <span asp-validation-for="@Model.Email"></span>
+                    </div>
+                    
+                    <div>
+                        <label asp-for="@Model.Password"></label>
+                        <input type="password" asp-for="@Model.Password" placeholder="Enter your password" value="@Model.Password" required>
+                        <span asp-validation-for="@Model.Password"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="@Model.PasswordConfirm"></label>
+                        <input type="password" asp-for="@Model.PasswordConfirm" placeholder="Confirm your password" value="@Model.PasswordConfirm" required>
+                        <span asp-validation-for="@Model.PasswordConfirm"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="@Model.Level"></label>
+                        <input type="number" min="1" max="4" asp-for="@Model.Level" value="@Model.Level" required />
+                        <span asp-validation-for="@Model.Level"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="@Model.GPA"></label>
+                        <input type="number" asp-for="@Model.GPA" placeholder="Enter Your GPA" required />
+                        <span asp-validation-for="@Model.GPA"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="@Model.Address">Address</label>
+                        <input type="text" asp-for="@Model.Address" placeholder="Enter your address" value="@Model.Address" required>
+                        <span asp-validation-for="@Model.Address"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="DeptID"></label>
+                        <select asp-for="DeptID" asp-items="DepartmentList" required>
+                            <option value="0">Select Department</option>
+                        </select>
+                        <span asp-validation-for="@Model.DeptID"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="@Model.ImageUrl"></label>
+                        <input type="file" class="form-control" asp-for="@Model.ImageUrl" name="traineePhoto" value="@Model.ImageUrl" required/>
+                        <span asp-validation-for="@Model.ImageUrl"></span>
+                    </div>
+                    
+                    <div>
+                        <input id="btn-submit" type="submit" value="Submit">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
